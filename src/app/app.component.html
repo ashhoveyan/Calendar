@@ -1,0 +1,38 @@
+<div class="calendar">
+  <div class="calendar-header">
+
+    <span class="year-change" id="prev-year"> <pre (click)="monthService.previousMonth()"><</pre> </span>
+    <span class="month-picker" id="month-picker">{{monthService.month}}</span>
+    <span class="year-change" id="next-year"> <pre (click)="monthService.nextMonth()">></pre> </span>
+
+    <div class="year-picker">
+      <span class="year" id="year">{{monthService.year}}</span>
+    </div>
+
+  </div>
+
+  <div class="calendar-body">
+
+    <div class="calendar-weeks">
+      <div class="weekend">Sun</div>
+      <div>Mon</div>
+      <div>Tues</div>
+      <div>Wed</div>
+      <div>Thur</div>
+      <div>Fri</div>
+      <div class="weekend">Sat</div>
+
+    </div>
+
+    <div class="calendar-days">
+      <div *ngFor="let i of monthService.Arr"></div>
+      <div *ngFor="let el of monthService.lastDayArr; let i = index" [class.thisDay]="i+1===monthService.date.getDate()
+      && monthService.month == monthService.monthArr[monthService.date.getMonth()]
+      && monthService.year == monthService.date.getFullYear()"  id="day" appSelect >{{i+1}}</div>
+    </div>
+
+  </div>
+
+</div>
+
+
